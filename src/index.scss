@@ -1,0 +1,17 @@
+@import 'scss/App';
+
+a {
+
+  &.nav {
+    color: #d2d2d2;
+    text-decoration: none;
+    margin-right: 30px;
+    font-weight: 300;
+    &.is-active {
+      color:#fff;
+    }
+  }
+
+
+}
+
