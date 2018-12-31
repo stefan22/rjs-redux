@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    ".gitignore": true,
+    ".eslintrc": true,
+    ".eslintrcignore": true,
+    ".editorConfig": true,
+    "package-lock.json": true,
+    "src/serviceWorker.js": true,
+    "serviceWorker.js": true,
+    "node_modules": true,
+    "public/manifest.json": true,
+  }
+
+}
