@@ -1,0 +1,31 @@
+#expenses-table thead {
+  background-color: #333333;
+}
+
+#expenses-table thead > tr:hover {
+  background:#333333;
+}
+
+#expenses-table.expenses-table thead > tr > th {
+  color: whitesmoke;
+  font-weight: 400;
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+#expenses-table.expenses-table tr > td {
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: left;
+  color:#00010b;
+}
+
+#expenses-table tr:hover {
+  font-weight: 400;
+  background:#eeeeee;
+  cursor: pointer;
+}
+
+
+
+

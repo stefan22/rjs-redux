@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
 import ExpensesList from '../../components/expenses-list';
-import Button from '@material-ui/core/Button';
-import {Link} from 'react-router-dom';
 import '../../scss/App.scss';
 
 
 class ExpensesListPage extends Component {
   render() {
     return (
-      <div>
-        <div className="app-comp full-container no-padding">
-          <ExpensesList  />
+      <div className='container no-padding'>
+        <header className='header expenses-list'>
+        <h1 className='text-center'>Expenses List page</h1>
 
-        </div>
+          <div className="app-comp full-container">
+            <ExpensesList />
+          </div>
 
-
-
+        </header>
       </div>
-    )
+
+    );
   }
 }
 
