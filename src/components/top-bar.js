@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DocsLogo from '../images/docs.png';
 import '../index.scss';
+import '../scss/components/top-bar.scss';
 
 
 function TopBar() {

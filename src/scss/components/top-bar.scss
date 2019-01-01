@@ -1,0 +1,51 @@
+.topbar {
+  header {
+    button.topbar-icon {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.018);
+        border-radius: 33%;
+      }
+      img:hover,img:focus, img:active {
+        mix-blend-mode: color-burn;
+        background:#fff;
+        opacity: .9;
+      }
+    }
+    @media (max-width:667px) {
+      button.topbar-icon {
+        padding:0;
+        margin:0;
+        height: 61px;
+        width:32%;
+        img:hover,img:focus, img:active {
+          mix-blend-mode: color-burn;
+          background:#fff;
+          opacity: .9;
+        }
+      }
+      a.nav {
+        padding:0;
+        margin:0;
+        font-size: 1em;
+        padding: 4px 4px 2px 4px;
+
+      }
+
+
+    }
+  }
+}
+.container {
+  @media (max-width:667px) {
+    .header {
+      h1 {
+        font-size: 1.9em;
+      }
+      p {
+        text-align: justify;
+        font-size: .9em;
+      }
+    }
+  }
+}
+
