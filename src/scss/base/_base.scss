@@ -16,6 +16,15 @@ body {
   margin:0;
   font-size: $sm-size;
   background: $light-white;
+  display: flex;
+  min-width:100%;
+}
+
+#root {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  width:100%;
 }
 
 
