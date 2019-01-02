@@ -40,8 +40,15 @@
 
 .input-filters {
   display: flex;
-  margin:40px 0;
+  margin:40px 0 0;
+  @media (max-width:667px) {
+    margin:0;
+    button .search-menu-icon {
+      display: none;
+    }
+  }
   .filters-container {
+
     display:flex;
     flex-wrap: wrap;
     width:100%;
@@ -57,5 +64,26 @@
 
 
 
+/* search-bar */
 
+.search-root {
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  margin: 2em 0;
+
+}
+
+.search-root input:focus, .search-root input:active, .search-root input:hover {
+  outline:none;
+  border:none;
+  box-shadow: none;
+}
+
+.search-input {
+  margin-left:8px;
+  flex:1;
+
+}
 
