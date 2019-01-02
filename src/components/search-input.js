@@ -8,7 +8,7 @@ import {setTextFilter} from '../actions/filters';
 import {connect} from 'react-redux';
 
 
-const SearchBar = (props) => {
+const SearchInput = (props) => {
   return (
     <Paper className='search-root' elevation={1}>
       <IconButton className='search-icon' aria-label="Menu">
@@ -37,7 +37,6 @@ const SearchBar = (props) => {
 };
 
 
-//export default SearchBar;
 
 const mapStateToProps = (state) => {
   return {
@@ -46,4 +45,7 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps)(SearchInput);
+
+
+
