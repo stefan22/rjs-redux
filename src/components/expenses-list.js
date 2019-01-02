@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../scss/components/expenses-list.scss';
 
-// import getVisibleExpenses from '../selectors/get-visible-expenses';
+import getVisibleExpenses from '../selectors/get-visible-expenses';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,7 +16,6 @@ const ExpensesList = (props) => (
 
       <Paper className='paper-root'>
         <Table id='expenses-table' className='expenses-table'>
-
           <TableHead>
             <TableRow >
               <TableCell align="left">Id</TableCell>
@@ -59,9 +58,9 @@ const ExpensesList = (props) => (
 const mapStateToProps = (state) => {
   return {
       //displaying all expenses
-      expenses: state.expenses,
-      filter: state.filters,
-      //expenses: getVisibleExpenses(state.expenses, state.filters)
+      //expenses: state.expenses,
+      //filter: state.filters,
+      expenses: getVisibleExpenses(state.expenses, state.filters)
   };
 }
 

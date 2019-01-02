@@ -38,6 +38,22 @@
 }//paper-root
 
 
+.input-filters {
+  display: flex;
+  margin:40px 0;
+  .filters-container {
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    input {
+      padding:12px 20px;
+      margin:0;
+      line-height: 27px;
+      font-size: 15px;
+      width: 100%;
+    }
+  }
+}
 
 
 

@@ -17,7 +17,7 @@ const store = ConfigStore();
 const unsubscribe = store.subscribe(() => {
   const state = store.getState();
   const visibleExpenses = getExpenses(state.expenses,state.filters);
-  console.log(visibleExpenses);
+  //console.log(visibleExpenses);
 });
 
  // actions
@@ -77,9 +77,9 @@ const exp8 = store.dispatch(addExpense({
   createdAt: 1011,
 }));
 
-const textbill = store.dispatch(setTextFilter({
-  text: 'bill'
-}));
+// const textFilter = store.dispatch(setTextFilter({
+//   text: 'bill'
+// }));
 
 
 
