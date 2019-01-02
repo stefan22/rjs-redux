@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import '../scss/components/expenses-list.scss';
 
+// import getVisibleExpenses from '../selectors/get-visible-expenses';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,10 +14,11 @@ import Paper from '@material-ui/core/Paper';
 
 const ExpensesList = (props) => (
 
-      <Paper>
+      <Paper className='paper-root'>
         <Table id='expenses-table' className='expenses-table'>
+
           <TableHead>
-            <TableRow>
+            <TableRow >
               <TableCell align="left">Id</TableCell>
               <TableCell align="left">Description</TableCell>
               <TableCell align="left">Notes</TableCell>

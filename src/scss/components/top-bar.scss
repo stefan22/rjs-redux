@@ -1,14 +1,18 @@
 .topbar {
   header {
+    max-height: 73.25px;
     button.topbar-icon {
       &:hover {
         background-color: rgba(0, 0, 0, 0.018);
         border-radius: 33%;
       }
-      img:hover,img:focus, img:active {
-        mix-blend-mode: color-burn;
-        background:#fff;
-        opacity: .9;
+      img {
+        max-height: 49.25px;
+        &:hover,&:focus, &:active {
+          mix-blend-mode: color-burn;
+          background:#fff;
+          opacity: .9;
+        }
       }
     }
     @media (max-width:667px) {
@@ -39,7 +43,7 @@
   @media (max-width:667px) {
     .header {
       h1 {
-        font-size: 1.9em;
+        font-size: 2.55rem;
       }
       p {
         text-align: justify;

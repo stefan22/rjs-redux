@@ -1,30 +1,44 @@
-#expenses-table thead {
-  background-color: #333333;
-}
+.paper-root {
+  width: 100%;
+  overflow-x: auto;
+  #expenses-table.expenses-table {
+    min-width: 700px;
+    thead {
+      background-color: #333333;
+      > tr {
+        &:hover {
+          background:#333333;
+        }
+        > th {
+          color: whitesmoke;
+          font-weight: 400;
+          font-size: 1.7rem;
+          @media (max-width:667px) {
+            font-size: 1.5rem;
+          }
+          text-align: left;
+        }
+      }
+    }
+    tr {
+      &:hover {
+        font-weight: 400;
+        background:#eeeeee;
+        cursor: pointer;
+      }
+      > td {
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-align: left;
+        color:#00010b;
+      }
+    }
 
-#expenses-table thead > tr:hover {
-  background:#333333;
-}
+  } //expenses-table
+}//paper-root
 
-#expenses-table.expenses-table thead > tr > th {
-  color: whitesmoke;
-  font-weight: 400;
-  font-size: 1.8rem;
-  text-align: left;
-}
 
-#expenses-table.expenses-table tr > td {
-  font-weight: 400;
-  font-size: 1.5rem;
-  text-align: left;
-  color:#00010b;
-}
 
-#expenses-table tr:hover {
-  font-weight: 400;
-  background:#eeeeee;
-  cursor: pointer;
-}
 
 
 
