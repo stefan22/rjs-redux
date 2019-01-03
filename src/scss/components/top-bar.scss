@@ -81,6 +81,15 @@
       }
 
     }
+    .main-content {
+      margin:2em 0;
+      @media (max-width:667px) {
+        p {
+          text-align: justify;
+        }
+      }
+
+    }
   }
 }
 
