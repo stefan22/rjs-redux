@@ -9,13 +9,10 @@ class NotFoundPage extends Component {
   render() {
     return (
       <div>
-        <div className="app-comp full-container no-padding">
-
-        </div>
         <div className='container'>
           <div className='lost-header'>
             <h1>Is someone maybe lost?</h1>
-            <h4>Luckily, we're here to help!</h4>
+            <h2>Luckily, we're here to help!</h2>
           </div>
           <div className='lost-error'>
             <Button component={Link} to='/'

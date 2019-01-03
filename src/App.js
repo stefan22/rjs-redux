@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import Header from './components/header';
 import BlueButton from './components/button';
 import './scss/App.scss';
-import './scss/home.scss';
 
 class App extends Component {
   constructor(props) {
@@ -17,17 +15,15 @@ class App extends Component {
     return (
       <div className="container">
           <Header pageName={this.state.pageName} />
+          <BlueButton name={btnName} />
+          <p>Click button for 404 page</p>
 
-            <Link to='/lost'>
-                <BlueButton name={btnName} />
-            </Link>
-            <p>Click button for 404 page</p>
-            <div className='store-data'>
-              <h2>created expenses list page</h2>
-
-              top menu..
-
-            </div>
+          <div className='main-content'>
+            <h2>Main content</h2>
+            <p className='text-left'>
+            Dolor primis viverra aenean fusce inceptos bibendum sagittis pretium aptent inceptos nulla facilisi. Laoreet molestie est faucibus dapibus in sed aptent quisque nulla. Lacinia, taciti vitae orci ante tincidunt in. Erat ac; convallis dignissim? Sollicitudin senectus, interdum imperdiet. Tortor urna gravida nisi libero neque tristique mauris inceptos amet ligula. Vulputate sociis eget at etiam inceptos quisque eleifend.
+            </p>
+          </div>
       </div>
     );
   }

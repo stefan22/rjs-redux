@@ -1,3 +1,9 @@
+@import '../base/settings';
+
+/*
+  top-bar
+˚˚˚˚˚˚˚˚˚˚˚˚
+*/
 .topbar {
   header {
     max-height: 73.25px;
@@ -21,6 +27,10 @@
         margin:0;
         height: 61px;
         width:32%;
+        span {
+          justify-content: flex-start;
+        }
+
         img:hover,img:focus, img:active {
           mix-blend-mode: color-burn;
           background:#fff;
@@ -30,7 +40,7 @@
       a.nav {
         padding:0;
         margin:0;
-        font-size: 1em;
+        font-size:$sm-size;
         padding: 4px 4px 2px 4px;
 
       }
@@ -40,17 +50,44 @@
   }
 }
 .container {
+  header {
+    margin:2em 0;
+  }
   @media (max-width:667px) {
     .header {
       h1 {
-        font-size: 2.55rem;
+        font-size: $lg-size;
+        font-weight: 500;
       }
       p {
+        font-size:$sm-size;
         text-align: justify;
-        font-size: .9em;
       }
+    }
+    .main-content {
+      margin:2em 0;
+      @media (max-width:667px) {
+        p {
+          text-align: justify;
+        }
+      }
+
     }
   }
 }
 
 
+/* topbar */
+
+.topbar-grow {
+  flex-grow: 1;
+}
+.topbar-icon img {//doc logo
+  max-width: 125px;
+  width:100%;
+  height: auto;
+}
+
+button.topbar-icon:hover, button.topbar-icon:active {
+  border:none;
+}
