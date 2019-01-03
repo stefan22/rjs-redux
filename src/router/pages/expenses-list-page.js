@@ -9,14 +9,15 @@ class ExpensesListPage extends Component {
     return (
       <div className='container no-padding'>
         <header className='header expenses-list'>
-        <h1 className='text-center'>Expenses List page</h1>
-
-          <div className="app-comp full-container">
+          <h1 className='text-center'>Expenses List page</h1>
+          <p className='text-center'>(filters off description)</p>
+        </header>
+          <div className="main-content full-container">
             <ExpensesFilters />
             <ExpensesList />
           </div>
 
-        </header>
+
       </div>
 
     );

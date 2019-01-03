@@ -1,92 +1,47 @@
 @import './base/base';
-@import './base/settings';
-// @import './components/expenses-list';
-// @import './components/top-bar';
-
-
-
-
-
-/* topbar */
-
-.topbar {
-  flex-grow: 1;
-}
-.topbar-icon {
-  margin-left: -12;
-  margin-right: 20;
-}
-.topbar-grow {
-  flex-grow: 1;
-}
-.topbar-icon img {//doc logo
-  max-width: 125px;
-  width:100%;
-  height: auto;
-}
-
-.topbar-home:hover,.topbar-home:active, .topbar-add:hover,.topbar-add:active, .topbar-create:hover, .topbar-create:active, .topbar-edit:hover, .topbar-edit:active, .topbar-delete:active, .topbar-help:active,
-.topbar-delete:hover, .topbar-help:hover, .back-home:active, .back-home:focus,
-.back-home:hover, a.button:hover, .button:hover, button:hover  {
-  border:none;
-}
-
-a.nav.topbar-home, a.nav.topbar-add, a.nav.topbar-help  {
-  font-size: $nav-size;
-  color:#d2d2d2;
-  padding: 18px 20px;
-  text-decoration: none;
-  font-weight: 300;
-  text-transform: capitalize;
-  &.is-active {
-    color:#fff;
-  }
-
-}
-
-button.topbar-icon:hover, button.topbar-icon:active {
-  border:none;
-}
 
 /* button submenu */
-
-.button-wrap button {
-  font-size: $reg-button-size;
-  padding: 15px 27px;
+.button-wrap {
+  margin:1em 0;
+  button {
+    font-size: $btn-size;
+    font-weight: 400;
+    padding: 12px 15px;
+  }
 }
 
 
 /* lost found page*/
 .lost-header {
-  margin:2em 0;
-  h1,h4 {
-    text-align: center;
-  }
+	margin: 2em 0;
+	h2 {
+		font-weight: 500;
+	}
+	h1,
+	h2 {
+		text-align: center;
+	}
 }
 .lost-error {
-  display: block;
-  margin: 0 auto;
-  max-width: 600px;
-  width: 100%;
-  a {
-    overflow: auto;
-    &.back-home {
-      padding: 0;
-      background-color: transparent;
-      &:hover {
-        background-color:transparent !important;
-      }
+	display: block;
+	margin: 0 auto;
+	max-width: 600px;
+	width: 100%;
+	a {
+		overflow: auto;
+		&.back-home {
+			padding: 0;
+			background-color: transparent;
+			&:hover {
+				background-color: transparent !important;
+			}
 
-      img {
-        height: auto;
-        max-width: 600px;
-        width:100%;
-        border-radius: 4px;
-      }
-
-    }
-
-  }
-
-
+			img {
+				height: auto;
+				max-width: 600px;
+				width: 100%;
+				border-radius: 4px;
+			}
+		}
+	}
 }

@@ -2,6 +2,11 @@
 @import './grid';
 @import './helpers';
 
+/*
+  base
+˚˚˚˚˚˚
+*/
+
 html {
   font-size: 62.5%;
   min-height: 100%;
@@ -28,4 +33,17 @@ body {
 }
 
 
+h1 {
+  font-size: $lg-size;
+}
 
+h2 {
+  font-size: $md-size;
+  font-weight: 500;
+}
+
+p {
+  font-size: $sm-size;
+  font-weight: 400;
+  color:#00010b;
+}
