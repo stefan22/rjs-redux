@@ -1,0 +1,51 @@
+@import '../base/settings';
+
+.isModal {
+  width: 550px;
+  height: 400px;
+  position: absolute;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  border: 1px solid #bdbdbd;
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width:50%;
+  z-index: 10;
+
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: #162e08;
+  font-size: 1.75rem;
+  padding: 12px 20px;
+}
+
+
+@media (max-width:667px) {
+  .isModal {
+    width:85%;
+  }
+
+
+}
