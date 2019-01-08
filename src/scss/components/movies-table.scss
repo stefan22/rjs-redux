@@ -71,12 +71,21 @@ tr.MuiTableRow-root-212,tr.MuiTableRow-root-120 {
 .movie-input {
   display: flex;
   padding: 7px 0;
+  justify-content: space-between;
   input {
     padding: 12px 20px;
     margin: 0;
     line-height: 27px;
     font-size: 1.5rem;
     width: 100%;
+  }
+  .table-info {
+    padding: 0 10px;
+    ul {
+      list-style: none;
+      margin: 0;
+      text-align: right;
+    }
   }
 }
 
@@ -170,4 +179,17 @@ tr.MuiTableRow-root-212,tr.MuiTableRow-root-120 {
 
 
 
+}
+
+
+#movies-table.movies-table tbody tr.highlight {
+  background-color: #fff59d;
+  &:hover {
+    background-color: #fff59d;
+  }
+}
+
+
+.table-info {
+  padding: 0 10px;
 }

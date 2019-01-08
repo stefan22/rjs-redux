@@ -5,6 +5,7 @@ import FavoriteStorageButton from '../../components/favorite-storage-button';
 import '../../scss/App.scss';
 import '../../scss/components/movies-table.scss';
 import MovieSearch from '../../components/movie-search';
+import TableInfo from '../../components/table-info';
 
 const API = 'https://api.themoviedb.org/3/search/movie?api_key=117e9acacc471dabf30286fd171fe77d&query=';
 
@@ -21,6 +22,7 @@ class MoviesPage extends Component {
     this.handleMovieInput = this.handleMovieInput.bind(this);
     this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
     this.handleTableCell = this.handleTableCell.bind(this);
+    this.handleToggleHighlight = this.handleToggleHighlight.bind(this);
   }
 
   componentWillMount() {  //bef init render get storage
@@ -92,14 +94,32 @@ class MoviesPage extends Component {
 
   }
 
+  handleToggleHighlight(whichKey) {
+    if((localStorage.getItem(whichKey) !== undefined) &&
+      (document.getElementById('movies-table').children !== undefined)) {
+      let highItm = document.
+                    getElementById('movies-table')
+                    .children[1].children[whichKey];
+
+      if(highItm.classList.contains('highlight')) {
+          highItm.classList.remove('highlight');
+          localStorage.removeItem(String(whichKey));
+      } else {
+          highItm.classList.add('highlight');
+      }
+
+    }//if
+  }
+
   handleTableCell(e) {//get table cell
     e.preventDefault();
     let favKey = e.currentTarget.getAttribute('favKey');
     localStorage.setItem(String(favKey), JSON.stringify(
-      this.state.movies.filter((itm,index) => {  //on table cell click
+    this.state.movies.filter((itm,index) => {  //on table cell click
         return (index == favKey) ? itm : null;   //save item to local storage
       })[0]
     ));
+    this.handleToggleHighlight(favKey);
   }
 
 
@@ -133,6 +153,7 @@ class MoviesPage extends Component {
 							<h1>Movies list</h1>
               <div className='movie-input'>
                   <MovieSearch handleMovieInput={this.handleMovieInput} />
+                  <TableInfo />
               </div>
 
               <div className='save-list'>
@@ -140,9 +161,10 @@ class MoviesPage extends Component {
                   handleFavoriteStorage={this.handleFavoriteStorage}
                   name={saveList}
                   movies={this.state.movies}
-
-
                 />
+
+
+
 
               </div>
 
