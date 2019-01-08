@@ -20,7 +20,6 @@ const TableInfo = (props) => {
           <li>{bull} Press enter to clear input field</li>
           <li>{bull} Click on table cell to store/highlight item</li>
           <li>{bull} Click on table cell again to remove stored item</li>
-
         </Typography>
       </CardContent>
     </Card>
