@@ -11,7 +11,7 @@ tr > td.table-overview {
 
 #movies-table.movies-table thead {
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: $sm-size;
   text-align: left;
   max-height: 90px;
   background-color: #333333;
@@ -46,13 +46,13 @@ tr.MuiTableRow-root-212,tr.MuiTableRow-root-120 {
 #movies-table.movies-table tr > th {
   color: whitesmoke;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: $sm-size;
   text-align: left;
 }
 
 #movies-table.movies-table tr > td {
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: $sm-size;
   text-align: left;
   max-height: 90px;
   color: #00010b;
@@ -72,20 +72,30 @@ tr.MuiTableRow-root-212,tr.MuiTableRow-root-120 {
   display: flex;
   padding: 7px 0;
   justify-content: space-between;
+
   input {
     padding: 12px 20px;
     margin: 0;
     line-height: 27px;
-    font-size: 1.5rem;
+    font-size: $sm-size;
     width: 100%;
   }
   .table-info {
     padding: 0 10px;
-    ul {
-      list-style: none;
-      margin: 0;
-      text-align: right;
+    @media (max-width:667px) {
+      display: none;
     }
+    div {
+      padding:5px;
+      ul {
+        font-size: $xs-size;
+        list-style: none;
+        margin: 0;
+        text-align: left;
+        padding-left:5px;
+      }
+    }
+
   }
 }
 
