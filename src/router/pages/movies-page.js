@@ -13,168 +13,141 @@ class MoviesPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-      pageName: 'Movies page',
+      isFav: false,
+			favorites: [],
+			pageName: 'Movies page',
 			movies: [],
-      moviesLoaded: false,
-      movieQuery: 'star',
-    };
-    this.handleGetMovies = this.handleGetMovies.bind(this);
-    this.handleMovieInput = this.handleMovieInput.bind(this);
-    this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
-    this.handleTableCell = this.handleTableCell.bind(this);
-    this.handleToggleHighlight = this.handleToggleHighlight.bind(this);
-  }
+			moviesLoaded: false,
+			movieQuery: 'star'
+		};
+		this.handleGetMovies = this.handleGetMovies.bind(this);
+		this.handleMovieInput = this.handleMovieInput.bind(this);
+		this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
+    this.addToFavorites = this.addToFavorites.bind(this);
+	}
 
-  componentWillMount() {  //bef init render get storage
-    localStorage.getItem('localMovies') && this.setState({
-      moviesLoaded: false,
-      movies: JSON.parse(localStorage.getItem('localMovies')),
-    });
-  }
+	componentWillMount() {	//bef init render get storage
+		localStorage.getItem('localMovies') &&
+			this.setState({
+				moviesLoaded: false,
+				movies: JSON.parse(localStorage.getItem('localMovies'))
+			});
+	}
 
-  componentDidMount() {  //after init
-    this.setState(prevState => ({//reset state
-      moviesLoaded: !prevState.moviesLoaded
-    }));
+	componentDidMount() {//after init
+		this.setState((prevState) => ({
+			moviesLoaded: !prevState.moviesLoaded 	//reset state
+		}));
+	}
 
-  }
+	handleMovieInput(term) {
+		const movies = this.state.movies || [];
+		let storeTitles = [];
+		let isTerm = new RegExp(term + '.*', 'i');
+		//set movieQuery
+		this.setState({
+			movieQuery: this.state.movieQuery !== isTerm ? isTerm : this.state.movieQuery
+		});
+		//check stored movies for matches
+		if (movies.length > 0) {
+			movies.map((itm) => {
+				if (itm.title.match(isTerm)) {
+					storeTitles.push(itm);
+				}
+				return this.setState({
+					movies: storeTitles,
+					...movies
+				});
+			});
+		} else {
+			//search api
+			this.handleGetMovies();
+		}
+	}
 
-  handleMovieInput(term) {
-    const movies = this.state.movies || [];
-    let storeTitles = [];
-    let isTerm = new RegExp(term + '.*','i');
-    //set movieQuery
+	handleFavoriteStorage() {
+		console.log('handle favorite in app');
+   this.setState(prevState => ({
+     isFav: !prevState.isFav
+   }));
+	}
+
+	handleGetMovies() {
+		//not in storage search api
+		fetch(API + this.state.movieQuery).then((response) => response.json()).then((data) => {
+			data = data.results;
+			this.setState((prevState) => ({
+				//add results to front of array
+				moviesLoaded: true,
+				movies: data,
+				...prevState.movies
+			}));
+		});
+	}
+
+	componentDidUpdate(nextProps, nextState) {
+		//bef rend new props
+		nextState = this.state;
+		localStorage.setItem('localMovies', JSON.stringify(nextState.movies));
+	}
+
+  addToFavorites(addFav){
     this.setState({
-      movieQuery: (this.state.movieQuery !== isTerm) ? isTerm : this.state.movieQuery
+      favorites: this.state.favorites.concat(addFav)
     });
-
-    //check stored movies for matches
-    if(movies.length > 0) {
-      movies.map((itm) => {
-        if((itm.title).match(isTerm)) {
-          storeTitles.push(itm);
-        }
-        return this.setState({
-          movies: storeTitles, ...movies
-        });
-      });
-    }
-
-    else {//search api
-      this.handleGetMovies();
-    }
-
   }
-
-
-  handleFavoriteStorage() {
-    console.log('handle favorite in app');
-
-  }
-
-
-  handleGetMovies() {//not in storage search api
-      fetch(API + this.state.movieQuery)
-      .then((response) => response.json())
-      .then((data) => {
-        data = data.results;
-        this.setState(prevState => ({//add results to front of array
-          moviesLoaded: true,
-          movies: data, ...prevState.movies
-        }));
-      });
-
-
-  }
-
-
-  componentDidUpdate(nextProps,nextState) {  //bef rend new props
-    nextState = this.state;
-    localStorage.setItem('localMovies', JSON.stringify(nextState.movies));
-
-  }
-
-  handleToggleHighlight(whichKey) {
-    if((localStorage.getItem(whichKey) !== undefined) &&
-      (document.getElementById('movies-table').children !== undefined)) {
-      let highItm = document.
-                    getElementById('movies-table')
-                    .children[1].children[whichKey];
-
-      if(highItm.classList.contains('highlight')) {
-          highItm.classList.remove('highlight');
-          localStorage.removeItem(String(whichKey));
-      } else {
-          highItm.classList.add('highlight');
-      }
-
-    }//if
-  }
-
-  handleTableCell(e) {//get table cell
-    e.preventDefault();
-    let favKey = e.currentTarget.getAttribute('favKey');
-    localStorage.setItem(String(favKey), JSON.stringify(
-    this.state.movies.filter((itm,index) => {  //on table cell click
-        return (index == favKey) ? itm : null;   //save item to local storage
-      })[0]
-    ));
-    this.handleToggleHighlight(favKey);
-  }
-
 
 	render() {
-    let saveList='Show Favorites';
-    const {moviesLoaded} = this.state;
-    const {pageName} = this.state;
+    console.log(this);
+		let saveList = 'Show Favorites';
+		const { moviesLoaded } = this.state;
+		const { pageName } = this.state;
 		if (!moviesLoaded) {
 			return (
 				<div className="container">
 					<Header pageName={pageName} />
 					<div className="main-content">
-            <div className='movies-loading'>
-              <h1>Loading...</h1>
-            </div>
-            <div className="movies-loader">
-              <div className='movie-icon'>
-              </div>
+						<div className="movies-loading">
+							<h1>Loading...</h1>
+						</div>
+						<div className="movies-loader">
+							<div className="movie-icon" />
 						</div>
 					</div>
 				</div>
 			);
 		} else {
-
-      //movies have loaded
+			//movies have loaded
 			return (
 				<div className="container">
 					<Header pageName={pageName} />
 					<div className="main-content">
 						<div className="movies-list">
 							<h1>Movies list</h1>
-              <div className='movie-input'>
-                  <MovieSearch handleMovieInput={this.handleMovieInput} />
-                  <TableInfo />
-              </div>
+							<div className="movie-input">
+								<MovieSearch handleMovieInput={this.handleMovieInput} />
+								<TableInfo />
+							</div>
 
-              <div className='save-list'>
-                <FavoriteStorageButton
-                  handleFavoriteStorage={this.handleFavoriteStorage}
-                  name={saveList}
-                  movies={this.state.movies}
-                />
+							<div className="save-list">
+								<FavoriteStorageButton
+									handleFavoriteStorage={this.handleFavoriteStorage}
+									name={saveList}
+									movies={this.state.movies}
+                  favorites={this.state.favorites}
+                  isFav={this.state.isFav}
+								/>
+							</div>
 
-
-
-
-              </div>
-
-              <MoviesTable
-                handleTableCell={this.handleTableCell}
-                moviesLoaded={this.state.moviesLoaded}
-                movies={this.state.movies} />
+							<MoviesTable
+								moviesLoaded={this.state.moviesLoaded}
+                favorites={this.state.favorites}
+								movies={this.state.movies}
+                isFav={this.state.isFav}
+                addToFavorites={this.addToFavorites}
+							/>
 
 						</div>
-
 					</div>
 				</div>
 			);

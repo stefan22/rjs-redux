@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import '../scss/App.scss';
 import '../scss/components/expenses-list.scss';
 import '../scss/components/movies-table.scss';
-import LoadFavorites from './modal';
+import LoadFavorites from './load-favorites';
 
 
 class FavoriteStorageButton extends Component {
@@ -11,11 +11,10 @@ class FavoriteStorageButton extends Component {
     super(props);
     this.state = {
       movies: this.props.movies,
-      openModal: false,
+      favorites: this.props.favorites,
+      isFav:this.props.isFav,
     }
     this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-
   }
 
   handleFavoriteStorage(e) {
@@ -24,31 +23,26 @@ class FavoriteStorageButton extends Component {
     modal.className = 'isModal show';
   }
 
-  handleCloseModal() {
-    document.querySelector('isModal hide');
-  }
-
-
 
   render() {
+    console.log(this);
     return (
-      <div className='button-wrap'>
-          <Button
-            onClick={this.handleFavoriteStorage}
-            color="primary">
-            {this.props.name}
-          </Button>
-          <LoadFavorites
-            openModal={this.state.openModal}
-            handleFavoriteStorage={this.handleFavoriteStorage}
-            handleCloseModal={this.handleCloseModal}
-            />
+      <div>
+        <div className='button-wrap'>
+            <Button
+              onClick={this.handleFavoriteStorage}
+              color="primary">
+              {this.props.name}
+            </Button>
+        </div>
+        <LoadFavorites
+          favorites={this.props.favorites}
+          isFav={this.props.isFav}
+          />
       </div>
     );
   }
 }
-
-
 
 
 
