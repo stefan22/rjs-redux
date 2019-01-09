@@ -34,11 +34,13 @@ class FavoriteStorageButton extends Component {
               color="primary">
               {this.props.name}
             </Button>
-        </div>
-        <LoadFavorites
-          favorites={this.props.favorites}
-          isFav={this.props.isFav}
+
+            <LoadFavorites
+              favorites={this.props.favorites}
+              isFav={this.props.isFav}
           />
+        </div>
+
       </div>
     );
   }

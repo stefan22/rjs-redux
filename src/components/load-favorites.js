@@ -17,11 +17,13 @@ class LoadFavorites extends Component {
     console.log(this);
     return (
         <div className='isModal hide'>
-          <h3 className='text-center'>Your favorites:</h3>
-          <button
-            onClick={this.handleCloseModal}
-            className='close-modal'>close
-          </button>
+          <div className='header'>
+              <h3 className='text-center'>Your favorites:</h3>
+              <button
+              onClick={this.handleCloseModal}
+              className='close-modal'>close
+            </button>
+          </div>
 
           <div className='favorites-list'>
 
