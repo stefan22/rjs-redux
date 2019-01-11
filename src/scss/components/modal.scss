@@ -1,7 +1,7 @@
 @import '../base/settings';
 
 .isModal {
-  top:50%;
+  top:45%;
   left:50%;
   width:960px;
   height: 540px;
@@ -28,23 +28,41 @@
     }
   }
   .favorites-list {
-    padding: 1em 0;
-    border-radius: 4px;
-    ul {
-      list-style: none;
-      padding-left:1em;
-      padding-right: 1em;
-      li {
-        span.movie-field {
-          font-weight: 600;
-        }
-      }
-      li:last-child {
-        border-bottom: 1px solid #dfdfdf;
-        padding-bottom:1em;
+      display: flex;
+      justify-content: space-between;
+      flex-flow: wrap;
+      flex-direction: row;
+      .fav-movies-card {
+        max-width: 48.5%;
+        margin-bottom: 2em;
+        button {
+          p.overview {
+            min-height: 114px;
+          }
 
-      }
-    }
+          padding: 0;
+          background:#fafafa;
+          box-shadow: none;
+          span.movie-release {
+            font-weight: 500;
+            margin-top: 10px;
+            display: inline-block;
+          }
+
+
+          h2 {
+            font-size: $btn-title-size;
+          }
+
+
+          p {
+            font-size: $btn-size;
+          }
+        }
+        .fav-movie {
+          color:#2196f3;
+        }
+     }
   }
 }
 
@@ -83,24 +101,29 @@
   .container {
     .main-content {
       .isModal {
-        width: 85%;
+        width: 89.8%;
         top: 40%;
-        left: 48.55%;
-        margin-left: -47%;
+        left: 50%;
+        margin-left: -50%;
         margin-top: -50%;
         padding-bottom: 1em;
         h3 {
-          font-size: $md-size;
+          font-size: $btn-title-size;
         }
         p {
+          font-size: $btn-size;
           text-align: center;
-          font-size: $sm-size;
         }
         .favorites-list {
-          border:none;
-          text-align: justify;
-          ul {
-            padding: 0;
+          .fav-movies-card {
+            max-width: 100%;
+            margin-bottom: 2em;
+            p {
+              text-align: justify;
+            }
+            .fav-movie {
+              color:#2196f3;
+            }
           }
         }
 
