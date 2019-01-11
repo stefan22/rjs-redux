@@ -1,25 +1,21 @@
 @import '../base/settings';
 
 .isModal {
-  max-height: 400px;
-  min-height: 400px;
-  height: auto;
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
+  top:50%;
+  left:50%;
+  width:960px;
+  height: 540px;
+  position: fixed;
+  margin-left: -480px;
+  margin-top: -270px;
   border: 1px solid #bdbdbd;
   background: rgb(255, 255, 255);
   overflow: auto;
   border-radius: 4px;
   outline: none;
   padding: 20px;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  width:60%;
+  // transform: translate(50%, 50%);
   z-index: 10;
-  overflow: auto;
   .header {
     display: flex;
     font-size: 1.35rem;
@@ -64,20 +60,31 @@
 
 
 @media (max-width:667px) {
-  .isModal {
-    width:85%;
-  }
+  .container {
+    .main-content {
+      .isModal {
+        width: 85%;
+        top: 40%;
+        left: 48.55%;
+        margin-left: -47%;
+        margin-top: -50%;
+        h3 {
+          font-size: $md-size;
+        }
+        p {
+          text-align: center;
+          font-size: $sm-size;
+        }
 
+      }
+    }
+  }
 
 }
 
 
 h3 {
   font-size: $md-size;
-}
-
-li,p {
-  font-size: $sm-size;
 }
 
 

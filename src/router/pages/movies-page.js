@@ -22,7 +22,7 @@ class MoviesPage extends Component {
 		};
 		this.handleGetMovies = this.handleGetMovies.bind(this);
 		this.handleMovieInput = this.handleMovieInput.bind(this);
-		this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
+		this.handleShowFavoritesButton = this.handleShowFavoritesButton.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
 	}
 
@@ -65,7 +65,7 @@ class MoviesPage extends Component {
 		}
 	}
 
-	handleFavoriteStorage() {
+	handleShowFavoritesButton() {
 		console.log('handle favorite in app');
    this.setState(prevState => ({
      isFav: !prevState.isFav
@@ -131,7 +131,7 @@ class MoviesPage extends Component {
 
 							<div className="save-list">
 								<FavoriteStorageButton
-									handleFavoriteStorage={this.handleFavoriteStorage}
+									handleShowFavoritesButton={this.handleShowFavoritesButton}
 									name={saveList}
 									movies={this.state.movies}
                   favorites={this.state.favorites}

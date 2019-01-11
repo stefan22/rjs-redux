@@ -14,13 +14,25 @@ class FavoriteStorageButton extends Component {
       favorites: this.props.favorites,
       isFav:this.props.isFav,
     }
-    this.handleFavoriteStorage = this.handleFavoriteStorage.bind(this);
+    this.handleShowFavoritesButton = this.handleShowFavoritesButton.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  handleFavoriteStorage(e) {
-    this.props.handleFavoriteStorage();
-    let modal = document.querySelector('.isModal.hide');
-    modal.className = 'isModal show';
+  handleShowFavoritesButton(e) {
+    e.preventDefault();
+    this.props.handleShowFavoritesButton();
+    let openModal = document.querySelector('.isModal');
+    if(openModal.classList.contains('hide')) {
+      openModal.className = 'isModal show';
+    }
+  }
+
+  handleCloseModal(e) {
+    e.preventDefault();
+    let closedModal = document.querySelector('.isModal');
+    if(closedModal.classList.contains('show')) {
+      closedModal.className = 'isModal hide';
+    }
   }
 
 
@@ -30,15 +42,26 @@ class FavoriteStorageButton extends Component {
       <div>
         <div className='button-wrap'>
             <Button
-              onClick={this.handleFavoriteStorage}
+              onClick={this.handleShowFavoritesButton}
               color="primary">
               {this.props.name}
             </Button>
 
-            <LoadFavorites
-              favorites={this.props.favorites}
-              isFav={this.props.isFav}
-          />
+            <div className='isModal hide'>
+              <div className='header'>
+                  <h3 className='text-center'>Your favorites:</h3>
+                  <button
+                  onClick={this.handleCloseModal}
+                  className='close-modal'>close
+                </button>
+              </div>
+                <LoadFavorites
+                  favorites={this.props.favorites}
+                  isFav={this.props.isFav}
+                />
+              <p className='text-center'>Press the close button to continue.</p>
+            </div>
+
         </div>
 
       </div>

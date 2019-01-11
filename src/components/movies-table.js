@@ -21,7 +21,9 @@ class MoviesTable extends Component {
   }
 
   handleToggleHighlight(whichKey) {
-		let addFav = this.state.movies[whichKey];
+    console.log(whichKey);
+    let addFav = this.state.movies[whichKey];
+    console.log(addFav);
 		if (
 			localStorage.getItem(whichKey) !== undefined &&
 			document.getElementById('movies-table').children !== undefined) {
@@ -33,7 +35,12 @@ class MoviesTable extends Component {
           this.setState(
             {
               //cannot remove by key/maybe id.
-              //favorites: this.state.favorites.slice(whichKey,whichKey + 1)
+              favorites: this.props.favorites.forEach((itm,index) => {
+                if(itm.id === addFav.id) {
+                  this.props.favorites.splice(index,1);
+                }
+                return this.props.favorites;
+              })
             }
           );
         } else {
