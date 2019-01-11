@@ -24,6 +24,7 @@ class FavoriteStorageButton extends Component {
     let openModal = document.querySelector('.isModal');
     if(openModal.classList.contains('hide')) {
       openModal.className = 'isModal show';
+      document.body.classList.add('modal-bg');
     }
   }
 
@@ -32,6 +33,7 @@ class FavoriteStorageButton extends Component {
     let closedModal = document.querySelector('.isModal');
     if(closedModal.classList.contains('show')) {
       closedModal.className = 'isModal hide';
+      document.body.classList.remove('modal-bg');
     }
   }
 

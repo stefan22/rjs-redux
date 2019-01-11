@@ -27,6 +27,25 @@
       margin: 0;
     }
   }
+  .favorites-list {
+    padding: 1em 0;
+    border-radius: 4px;
+    ul {
+      list-style: none;
+      padding-left:1em;
+      padding-right: 1em;
+      li {
+        span.movie-field {
+          font-weight: 600;
+        }
+      }
+      li:last-child {
+        border-bottom: 1px solid #dfdfdf;
+        padding-bottom:1em;
+
+      }
+    }
+  }
 }
 
 .hide {
@@ -36,6 +55,7 @@
 .show {
   visibility: visible;
   opacity: 1;
+  padding-bottom: 3.5em;
 }
 
 .close-modal {
@@ -68,6 +88,7 @@
         left: 48.55%;
         margin-left: -47%;
         margin-top: -50%;
+        padding-bottom: 1em;
         h3 {
           font-size: $md-size;
         }
@@ -75,6 +96,14 @@
           text-align: center;
           font-size: $sm-size;
         }
+        .favorites-list {
+          border:none;
+          text-align: justify;
+          ul {
+            padding: 0;
+          }
+        }
+
 
       }
     }
@@ -89,3 +118,21 @@ h3 {
 
 
 
+body.modal-bg {
+  margin: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: all 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  z-index: 1;
+  #root .paper-root {
+    visibility: hidden;
+  }
+  #root .save-list, #root .movie-input, #root .movies-list {
+    visibility: hidden;
+  }
+  .isModal {
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12);
+    background-color: #fff;
+  }
+}
