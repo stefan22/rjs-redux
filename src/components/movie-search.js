@@ -30,7 +30,7 @@ class MovieSearch extends Component {
       query = query.split(' ').join('&');
       this.props.handleMovieInput(query);
     }
-    console.log(query);
+    //console.log(query);
     document.querySelector('.search-input input')
     .addEventListener('keydown',this.enterKey, false);
   }

@@ -75,13 +75,13 @@ class MoviesPage extends Component {
 	handleGetMovies() {
 		//not in storage search api
 		fetch(API + this.state.movieQuery).then((response) => response.json()).then((data) => {
-			data = data.results;
-			this.setState((prevState) => ({
-				//add results to front of array
-				moviesLoaded: true,
-				movies: data,
-				...prevState.movies
-			}));
+      data = data.results;
+      this.setState((prevState) => ({
+        //add results to front of array
+        moviesLoaded: true,
+        movies: data,
+        ...prevState.movies
+      }));
 		});
 	}
 

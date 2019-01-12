@@ -50,7 +50,7 @@ class LoadFavorites extends Component {
                             alt="{itm.title}"
                             className={classes.media}
                             height="140"
-                            img src={imgPath + itm.poster_path}
+                            image={imgPath + itm.poster_path}
                             title="{itm.title}"
                           />
                           <CardContent>

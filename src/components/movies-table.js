@@ -83,8 +83,8 @@ class MoviesTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.movies.length > 0 ? (
-              this.state.movies.map((mov, idx) => {
+            {this.props.movies.length > 0 ? (
+              this.props.movies.map((mov, idx) => {
                 return [
                   <TableRow key={idx} favkey={idx}
                     onClick={this.handleTableCell}
