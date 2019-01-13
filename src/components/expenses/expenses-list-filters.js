@@ -19,6 +19,7 @@ const ExpensesListFilters = (props) => {
           <InputBase
             className='search-input'
             placeholder="Enter search term"
+            input type='text'
             value={props.filters.text}
             onChange={
               (e) => {

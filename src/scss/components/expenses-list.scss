@@ -86,3 +86,19 @@
 	margin-left: 8px;
 	flex: 1;
 }
+
+
+.tableWrapper .MuiTableCell-paddingCheckbox-124 {
+  padding: 0 7px;
+}
+
+
+button.delete-expense {
+  margin: 5px 15px 9px 0;
+  padding: 3px 7px 7px 5px;
+}
+
+#expense-id button.delete-expense {
+  width:42px;
+  height: 42px;
+}
