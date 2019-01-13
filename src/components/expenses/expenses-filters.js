@@ -1,5 +1,5 @@
 import React from 'react';
-import '../scss/components/expenses-list.scss';
+import '../../scss/components/expenses-list.scss';
 import SearchInput from './search-input';
 
 

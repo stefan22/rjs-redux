@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import '../scss/components/expenses-list.scss';
+import '../../scss/components/expenses-list.scss';
 
-import getVisibleExpenses from '../selectors/get-visible-expenses';
+import getVisibleExpenses from '../../selectors/get-visible-expenses';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';

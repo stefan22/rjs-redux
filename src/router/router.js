@@ -9,7 +9,7 @@ import EditExpensePage from './pages/edit-expense-page';
 import HelpExpensePage from './pages/help-expense-page';
 import UpdateExpensePage from './pages/update-expense-page';
 import NotFoundPage from './pages/not-found-page';
-import TopBar from '../components/top-bar';
+import TopBar from '../components/header/top-bar';
 
 
 

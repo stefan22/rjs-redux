@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import ExpensesList from '../../components/expenses-list';
+import ExpensesList from '../../components/expenses/expenses-list';
 import '../../scss/App.scss';
-import ExpensesFilters from '../../components/expenses-filters';
+import ExpensesFilters from '../../components/expenses/expenses-filters';
 
 
 class ExpensesListPage extends Component {

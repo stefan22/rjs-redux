@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
-import '../scss/App.scss';
-import '../scss/components/expenses-list.scss';
-import '../scss/components/movies-table.scss';
+import '../../scss/App.scss';
+import '../../scss/components/expenses-list.scss';
+import '../../scss/components/movies-table.scss';
 import LoadFavorites from './load-favorites';
-
 
 class FavoriteStorageButton extends Component {
   constructor(props) {
@@ -20,9 +19,9 @@ class FavoriteStorageButton extends Component {
 
   handleShowFavoritesButton(e) {
     e.preventDefault();
-    this.props.handleShowFavoritesButton();
     let openModal = document.querySelector('.isModal');
     if(openModal.classList.contains('hide')) {
+      this.props.handleShowFavoritesButton();
       openModal.className = 'isModal show';
       document.body.classList.add('modal-bg');
     }
@@ -32,14 +31,13 @@ class FavoriteStorageButton extends Component {
     e.preventDefault();
     let closedModal = document.querySelector('.isModal');
     if(closedModal.classList.contains('show')) {
+      this.props.handleShowFavoritesButton();
       closedModal.className = 'isModal hide';
       document.body.classList.remove('modal-bg');
     }
   }
 
-
   render() {
-    console.log(this);
     return (
       <div>
         <div className='button-wrap'>
@@ -60,6 +58,7 @@ class FavoriteStorageButton extends Component {
                 <LoadFavorites
                   favorites={this.props.favorites}
                   isFav={this.props.isFav}
+                  handleUnfavorite={this.props.handleUnfavorite}
                 />
               <p className='text-center'>Press the close button to continue.</p>
             </div>

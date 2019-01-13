@@ -36,9 +36,18 @@
         max-width: 48.5%;
         margin-bottom: 2em;
         button {
+          h2 {
+            height: 29px;
+            overflow: hidden;
+          }
           p.overview {
             min-height: 114px;
+            max-height: 114px;
+            overflow: hidden;
+
           }
+
+
 
           padding: 0;
           background:#fafafa;
@@ -46,7 +55,7 @@
           span.movie-release {
             font-weight: 500;
             margin-top: 10px;
-            display: inline-block;
+
           }
 
 
@@ -63,6 +72,9 @@
           color:#2196f3;
         }
      }
+     .MuiCardActions-root-189 {
+        padding: 0 4px 8px 12px;
+    }
   }
 }
 

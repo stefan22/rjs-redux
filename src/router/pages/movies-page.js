@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from '../../components/header';
-import MoviesTable from '../../components/movies-table';
-import FavoriteStorageButton from '../../components/favorite-storage-button';
+import Header from '../../components/header/header';
+import MoviesTable from '../../components/movies/movies-table';
+import FavoriteStorageButton from '../../components/movies/favorite-storage-button';
 import '../../scss/App.scss';
 import '../../scss/components/movies-table.scss';
-import MovieSearch from '../../components/movie-search';
-import TableInfo from '../../components/table-info';
+import MovieSearch from '../../components/movies/movie-search';
+import TableInfo from '../../components/movies/table-info';
 
 const API = 'https://api.themoviedb.org/3/search/movie?api_key=117e9acacc471dabf30286fd171fe77d&query=';
 
@@ -23,16 +23,20 @@ class MoviesPage extends Component {
 		this.handleGetMovies = this.handleGetMovies.bind(this);
 		this.handleMovieInput = this.handleMovieInput.bind(this);
 		this.handleShowFavoritesButton = this.handleShowFavoritesButton.bind(this);
-    this.addToFavorites = this.addToFavorites.bind(this);
+    this.handleTableCell = this.handleTableCell.bind(this);
+    this.handleToggleHighlight = this.handleToggleHighlight.bind(this);
+    this.handleUnfavorite = this.handleUnfavorite.bind(this);
 	}
 
-	componentWillMount() {	//bef init render get storage
-		localStorage.getItem('localMovies') &&
-			this.setState({
-				moviesLoaded: false,
-				movies: JSON.parse(localStorage.getItem('localMovies'))
-			});
-	}
+  componentWillMount() {	//bef init render get storage
+    let {favorites} = this.state;
+    for ( let i = 0, len = localStorage.length; i < len; ++i ) {
+      favorites.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    }
+    this.setState({
+      favorites: this.state.favorites, ...favorites,
+    });
+  }
 
 	componentDidMount() {//after init
 		this.setState((prevState) => ({
@@ -66,7 +70,6 @@ class MoviesPage extends Component {
 	}
 
 	handleShowFavoritesButton() {
-		console.log('handle favorite in app');
    this.setState(prevState => ({
      isFav: !prevState.isFav
    }));
@@ -83,22 +86,66 @@ class MoviesPage extends Component {
         ...prevState.movies
       }));
 		});
-	}
+  }
 
-	componentDidUpdate(nextProps, nextState) {
-		//bef rend new props
-		nextState = this.state;
-		localStorage.setItem('localMovies', JSON.stringify(nextState.movies));
-	}
-
-  addToFavorites(addFav){
-    this.setState({
-      favorites: this.state.favorites.concat(addFav)
+  favToRem(title) {
+    let isTitle = title;
+    let favsRem = [];
+    let {favorites} = this.state;
+    favorites.filter(itm => {
+      if(itm.title !== isTitle) {//rem from favs
+        favsRem.push(itm);
+      }
+      return this.setState({
+        favorites: favsRem
+      });
     });
   }
 
+  handleToggleHighlight(whichKey,title) {
+    let addFavObj = this.state.movies[whichKey];
+    let isTitle = title;
+    let moviesTable = document.getElementById('movies-table');
+		if (moviesTable.children !== undefined) {
+      //toggle highlight
+      let highliItem = moviesTable.children[1].children[whichKey];
+      if (highliItem.classList.contains('highlight')) {
+         highliItem.classList.remove('highlight');
+         localStorage.removeItem(isTitle);//remove from localstorage
+        this.favToRem(isTitle);
+      } else {//add highlight
+          highliItem.classList.add('highlight');
+          //check title bef adding to localstorage
+          let isInLocal = localStorage.getItem(isTitle);
+          isInLocal === null && localStorage.setItem(
+          String(isTitle), JSON.stringify(
+            this.state.movies.filter(itm => { //chk title off movies
+              return itm.title === isTitle ? itm : null; //add to store
+            })[0]
+          )
+          );
+          this.setState({//add to store
+            favorites: this.state.favorites.concat(addFavObj)
+          });
+        }
+		} //if
+  }
+
+  handleTableCell(e) {
+		e.preventDefault();
+    let favKey = e.currentTarget.getAttribute('favKey');
+    let tartitle = e.currentTarget.children[5].textContent;
+    this.handleToggleHighlight(favKey,tartitle);
+  }
+
+  handleUnfavorite(title) {
+    let isTitle = title;
+    localStorage.removeItem(isTitle);
+    this.favToRem(isTitle);
+  }
+
+
 	render() {
-    console.log(this);
 		let saveList = 'Show Favorites';
 		const { moviesLoaded } = this.state;
 		const { pageName } = this.state;
@@ -136,6 +183,7 @@ class MoviesPage extends Component {
 									movies={this.state.movies}
                   favorites={this.state.favorites}
                   isFav={this.state.isFav}
+                  handleUnfavorite={this.handleUnfavorite}
 								/>
 							</div>
 
@@ -145,6 +193,8 @@ class MoviesPage extends Component {
 								movies={this.state.movies}
                 isFav={this.state.isFav}
                 addToFavorites={this.addToFavorites}
+                handleTableCell={this.handleTableCell}
+                handleToggleHighlight={this.handleToggleHighlight}
 							/>
 
 						</div>

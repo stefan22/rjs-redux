@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-//import Typography from '@material-ui/core/Typography';
-import '../scss/components/modal.scss';
-
-
+import '../../scss/components/modal.scss';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -27,21 +24,26 @@ const styles = {
   },
 };
 
-
 class LoadFavorites extends Component {
+  constructor(props) {
+    super(props);
+    this.handleUnfavorite = this.handleUnfavorite.bind(this);
+  }
 
+  handleUnfavorite(e) {
+    console.dir(e.currentTarget);
+    let pre = e.currentTarget.parentElement.parentElement.children[0];
+    let title = pre.children[1].children[0].textContent;
+    this.props.handleUnfavorite(title);
+  }
 
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
   render() {
-    const { classes } = this.props;
+    console.log(this);
+    const { classes,favorites,isFav } = this.props;
     return (
-          // <div className='favorites-list'>
             <div className='favorites-list'>
               {
-
-                this.props.favorites.map((itm,index) => {
+               isFav && favorites !== undefined && favorites.map((itm,index) => {
                   return (
                       <Card className='fav-movies-card' key={index}>
                         <CardActionArea>
@@ -51,7 +53,7 @@ class LoadFavorites extends Component {
                             className={classes.media}
                             height="140"
                             image={imgPath + itm.poster_path}
-                            title="{itm.title}"
+                            title={itm.title}
                           />
                           <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
@@ -60,14 +62,16 @@ class LoadFavorites extends Component {
                             <Typography component="p" className='overview'>
                             {itm.overview}
                             </Typography>
-                            <Typography component='p'>
+                            <Typography component='p' className='release-date'>
                             <span className='movie-release'>Release date:</span> {itm.release_date}
                             </Typography>
                           </CardContent>
                         </CardActionArea>
                         <CardActions>
-                          <Button className='fav-movie' size="small" color="primary">
-                            Share
+                          <Button className='fav-movie'
+                            onClick={this.handleUnfavorite}
+                            size="small" color="primary">
+                            Unfavorite
                           </Button>
                           <Button className='fav-movie' size="small" color="primary">
                             Learn More
@@ -80,13 +84,11 @@ class LoadFavorites extends Component {
           </div>
     );
   }
-
 }
 
 LoadFavorites.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 
 
 export default withStyles(styles)(LoadFavorites);

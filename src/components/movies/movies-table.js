@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import '../scss/components/expenses-list.scss';
+import '../../scss/components/expenses-list.scss';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import '../scss/components/movies-table.scss';
+import '../../scss/components/movies-table.scss';
 
 class MoviesTable extends Component {
   constructor(props) {
@@ -16,55 +16,9 @@ class MoviesTable extends Component {
       isfav: this.props.isfav,
       favorites: this.props.favorites,
     }
-    this.handleTableCell = this.handleTableCell.bind(this);
-    this.handleToggleHighlight = this.handleToggleHighlight.bind(this);
+
   }
 
-  handleToggleHighlight(whichKey) {
-    console.log(whichKey);
-    let addFav = this.state.movies[whichKey];
-    console.log(addFav);
-		if (
-			localStorage.getItem(whichKey) !== undefined &&
-			document.getElementById('movies-table').children !== undefined) {
-			let highItm = document.getElementById('movies-table').children[1].children[whichKey];
-        //toggle highlight class
-        if (highItm.classList.contains('highlight')) {
-          highItm.classList.remove('highlight');
-          localStorage.removeItem(String(whichKey)); //rem from store
-          this.setState(
-            {
-              //cannot remove by key/maybe id.
-              favorites: this.props.favorites.forEach((itm,index) => {
-                if(itm.id === addFav.id) {
-                  this.props.favorites.splice(index,1);
-                }
-                return this.props.favorites;
-              })
-            }
-          );
-        } else {
-          highItm.classList.add('highlight');
-          this.props.addToFavorites(addFav);
-        }
-		} //if
-	}
-
-  handleTableCell(e) {
-		//get table cell
-		e.preventDefault();
-		let favKey = e.currentTarget.getAttribute('favKey');
-		localStorage.setItem(
-			String(favKey),
-			JSON.stringify(
-				this.state.movies.filter((itm, index) => {
-					//on table cell click
-					return index == favKey ? itm : null; //add to store
-				})[0]
-			)
-    );
-    this.handleToggleHighlight(favKey);
-	}
 
   render() {
     return (
@@ -87,7 +41,7 @@ class MoviesTable extends Component {
               this.props.movies.map((mov, idx) => {
                 return [
                   <TableRow key={idx} favkey={idx}
-                    onClick={this.handleTableCell}
+                    onClick={this.props.handleTableCell}
                   >
                     <TableCell  className="table-id" align="left">
                       {mov.id}
@@ -102,7 +56,7 @@ class MoviesTable extends Component {
                       {mov.popularity}
                     </TableCell>
                     <TableCell className="table-release-date" align="left">
-                      {mov.release_date}
+                    <span>...</span>{mov.release_date}
                     </TableCell>
                     <TableCell className="table-title" align="left">
                       {mov.title}

@@ -3,8 +3,8 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
-import '../scss/components/expenses-list.scss';
-import {setTextFilter} from '../actions/filters';
+import '../../scss/components/expenses-list.scss';
+import {setTextFilter} from '../../actions/filters';
 import {connect} from 'react-redux';
 
 
