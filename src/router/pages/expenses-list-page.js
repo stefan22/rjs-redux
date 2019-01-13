@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ExpensesList from '../../components/expenses/expenses-list';
 import '../../scss/App.scss';
-import ExpensesFilters from '../../components/expenses/expenses-filters';
+import ExpensesListFilters from '../../components/expenses/expenses-list-filters';
 
 
 class ExpensesListPage extends Component {
@@ -13,7 +13,7 @@ class ExpensesListPage extends Component {
           <p className='text-center'>(filters off description)</p>
         </header>
           <div className="main-content">
-            <ExpensesFilters />
+            <ExpensesListFilters />
             <ExpensesList />
           </div>
 
