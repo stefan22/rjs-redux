@@ -1,0 +1,255 @@
+@import '../base/settings';
+
+#eq-table.eq-table tr > td.table-title {
+  max-height: 101px;
+  overflow: hidden;
+}
+
+#eq-table.eq-table thead {
+  font-weight: 400;
+  font-size: $sm-size;
+  text-align: left;
+  max-height: 90px;
+  background-color: $sdark;
+}
+
+
+
+#eq-table.eq-table thead > tr > th.table-id {
+  // width:20%;
+  max-width: 150px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 90px;
+    padding: 4px 24px 4px 24px;
+  }
+}
+
+#eq-table.eq-table thead > tr > th.table-overview {
+  // width:40%;
+  max-width: 300px;
+  @media (max-width:667px) {
+    width:40%;
+    max-width: 250px;
+    padding: 4px 25px 4px 25px;
+  }
+}
+
+#eq-table.eq-table thead > tr > th.table-mag {
+  // width:20%;
+  max-width: 150px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 40px;
+    padding: 4px 10px 4px 10px;
+  }
+}
+
+#eq-table.eq-table thead > tr > th.table-magtype {
+  // width:20%;
+  max-width: 150px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 40px;
+    padding: 4px 5px 4px 5px;
+  }
+}
+
+
+#eq-table.eq-table tr {
+  padding:1px;
+  color: inherit;
+  height: 48px;
+  display: table-row;
+  outline: none;
+  vertical-align: middle;
+  opacity: .94;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+
+#eq-table.eq-table tbody tr:hover {
+ background-color:#eeeeee;
+ opacity: 1;
+ color:#222;
+ transition: all .35s;
+ padding:3px 0;
+ cursor: pointer;
+}
+
+#eq-table.eq-table tr > th {
+  color: whitesmoke;
+  font-weight: 400;
+  font-size: $xs-size;
+  text-align: left;
+}
+
+#eq-table.eq-table tr > td {
+  font-weight: 400;
+  font-size: $sm-size;
+  text-align: left;
+  max-height: 90px;
+  color: #00010b;
+  border-bottom: 0;
+  margin-top:2px;
+  margin-bottom: 0px;
+  padding: 4px 50px 4px 50px;
+
+}
+
+#eq-table.eq-table tr > td.table-id {
+  // width:20%;
+  max-width: 150px;
+  padding: 4px 17px 4px 24px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 90px;
+    overflow: hidden;
+    padding:4px;
+  }
+}
+
+#eq-table.eq-table tr > td.table-mag {
+  // width:20%;
+  max-width: 90px;
+  padding: 4px 30px 4px 30px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 40px;
+    padding: 4px 10px 4px 10px;
+  }
+}
+
+#eq-table.eq-table tr > td.table-magtype {
+  // width:20%;
+  max-width: 150px;
+  padding: 4px 30px 4px 30px;
+  @media (max-width:667px) {
+    width:20%;
+    max-width: 40px;
+    padding: 4px 10px 4px 10px;
+  }
+}
+
+#eq-table.eq-table tr > td.table-overview {
+  padding: 4px 25px 4px 25px;
+  // width: 40%;
+  @media (max-width:667px) {
+    width:40%;
+    max-width: 250px;
+    padding: 4px 10px 4px 20px
+  }
+
+}
+
+
+
+.eq-list {
+  h1 {
+    font-weight: 400;
+    color: $pdark;
+  }
+  @media (max-width:667px) {
+    h1 {
+      text-align: center;
+      font-weight: 400;
+      color:$pdark;
+    }
+  }
+
+}
+
+.eq-input {
+  display: flex;
+  padding: 7px 0;
+  justify-content: space-between;
+
+  input {
+    padding: 12px 20px;
+    margin: 0;
+    line-height: 27px;
+    font-size: $sm-size;
+    width: 100%;
+  }
+
+}
+
+/* search-bar */
+
+.search-root {
+	padding: 2px 4px;
+	display: flex;
+	align-items: center;
+	width: 400px;
+  margin-bottom:2em;
+  @media (max-width:667px) {
+    margin-bottom:1em;
+  }
+}
+
+.search-root input:focus,
+.search-root input:active,
+.search-root input:hover {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+
+.eq-input {
+	display: flex;
+  padding: 7px 0;
+  justify-content: flex-end;
+  .buttons-wrapper {
+    button {
+      &:last-child {
+        margin-left:10px;
+      }
+    }
+    .sort-button {
+      margin:0;
+      font-size: $btn-size;
+      padding: 12px 30px;
+      color: #fff;
+      background-color: rgb(225, 0, 80);
+      &:hover {
+        background-color: rgb(157, 0, 56);
+        text-decoration:none;
+      }
+    }
+
+  }
+}
+
+.eq-input form {
+  > div {
+    margin:0;
+    border-bottom: none;
+    &:hover,&:active,&:focus {
+      color:black;
+    }
+  }
+  label {
+    font-size: $sm-size;
+    color: $stext;
+    line-height: 0;
+    font-weight: 400;
+    &:active, &:focus, &:visited {
+      color:$stext;
+      outline: none;
+    }
+    .MuiFormLabel-root-111.MuiFormLabel-focuses-112:active {
+      color:$stext;
+    }
+
+  }
+}
+
+#menu-magtype {
+  li {
+    font-size: $sm-size;
+  }
+}
+
+.MuiSelect-select-119.MuiSelect-selectMenu-122 {
+  font-size: $sm-size;
+}

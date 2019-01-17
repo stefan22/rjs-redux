@@ -6,6 +6,11 @@
 */
 .topbar {
   header {
+    @media (max-width:667px) {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+    }
     max-height: 73.25px;
     button.topbar-icon {
       &:hover {
@@ -23,10 +28,11 @@
     }
     @media (max-width:667px) {
       button.topbar-icon {
-        padding:0;
-        margin:0;
-        height: 61px;
-        width:32%;
+        // padding:0;
+        // margin:0;
+        // height: 61px;
+        // width:32%;
+        display: none;
         span {
           justify-content: flex-start;
         }

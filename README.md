@@ -1,3 +1,7 @@
+
+![](https://img.shields.io/github/last-commit/google/skia.svg) [![npm version](https://badge.fury.io/js/react.svg)](https://badge.fury.io/js/react)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
