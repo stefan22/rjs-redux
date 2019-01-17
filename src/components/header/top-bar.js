@@ -32,8 +32,8 @@ function TopBar() {
             to='/movies' activeClassName='is-active'>Movies
           </NavLink>
 
-          <NavLink className='nav topbar-add' to='/add'
-            activeClassName='is-active'>Add
+          <NavLink className='nav topbar-expenses'
+            to='/earthquakes' activeClassName='is-active'>Earthquakes
           </NavLink>
 
         </Toolbar>

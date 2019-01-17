@@ -4,6 +4,7 @@ import App from '../App';
 import AddExpensePage from './pages/add-expense-page';
 import ExpensesListPage from './pages/expenses-list-page';
 import MoviesPage from './pages/movies-page';
+import EarthquakesPage from './pages/earthquakes-page';
 import DeleteExpensePage from './pages/delete-expense-page';
 import EditExpensePage from './pages/edit-expense-page';
 import HelpExpensePage from './pages/help-expense-page';
@@ -22,6 +23,7 @@ const Routes = () => (
         <Route path='/' component={App} exact={true} />
         <Route path='/expenses' component={ExpensesListPage} />
         <Route path='/movies' component={MoviesPage} />
+        <Route path='/earthquakes' component={EarthquakesPage} />
         <Route path='/add' component={AddExpensePage} />
         <Route path='/edit/:id' component={EditExpensePage} />
         <Route path='/delete/:id' component={DeleteExpensePage} />
