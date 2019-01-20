@@ -3,16 +3,15 @@ import Header from './components/header/header';
 import './scss/App.scss';
 
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			pageName: 'Home page'
-		};
-	}
 	render() {
+    const pageName='Home page';
+    const subtitle='home page dashboard';
 		return (
 			<div className="container">
-				<Header pageName={this.state.pageName} />
+				<Header
+          pageName={pageName}
+          subtitle={subtitle}
+        />
 
 				<div className="main-content">
 					<h2>Main content</h2>

@@ -5,10 +5,8 @@ import AddExpensePage from './pages/add-expense-page';
 import ExpensesListPage from './pages/expenses-list-page';
 import MoviesPage from './pages/movies-page';
 import EarthquakesPage from './pages/earthquakes-page';
-import DeleteExpensePage from './pages/delete-expense-page';
 import EditExpensePage from './pages/edit-expense-page';
 import HelpExpensePage from './pages/help-expense-page';
-import UpdateExpensePage from './pages/update-expense-page';
 import NotFoundPage from './pages/not-found-page';
 import TopBar from '../components/header/top-bar';
 
@@ -26,8 +24,6 @@ const Routes = () => (
         <Route path='/earthquakes' component={EarthquakesPage} />
         <Route path='/add' component={AddExpensePage} />
         <Route path='/edit/:id' component={EditExpensePage} />
-        <Route path='/delete/:id' component={DeleteExpensePage} />
-        <Route path='/update/:id' component={UpdateExpensePage} />
         <Route path='/help' component={HelpExpensePage} />
         <Route component={NotFoundPage} />
       </Switch>

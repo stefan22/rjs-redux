@@ -4,14 +4,11 @@ import {Provider} from 'react-redux';
 import Routes from './router/router';
 import ConfigStore from './store/config-store';
 import {addExpense, removeExpense, editExpense} from './actions/expenses';
-import {setTextFilter} from './actions/filters';
 import getExpenses from './selectors/get-visible-expenses';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
-
 const store = ConfigStore();
-
 
 // subscribe
 const unsubscribe = store.subscribe(() => {
@@ -76,11 +73,6 @@ const exp8 = store.dispatch(addExpense({
   amount: 90005,
   createdAt: 1011,
 }));
-
-// const textFilter = store.dispatch(setTextFilter({
-//   text: 'bill'
-// }));
-
 
 
 // unsubscribe

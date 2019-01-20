@@ -28,11 +28,11 @@ function TopBar() {
             to='/expenses' activeClassName='is-active'>Expenses
           </NavLink>
 
-          <NavLink className='nav topbar-expenses'
+          <NavLink className='nav topbar-movies'
             to='/movies' activeClassName='is-active'>Movies
           </NavLink>
 
-          <NavLink className='nav topbar-expenses'
+          <NavLink className='nav topbar-earthquakes'
             to='/earthquakes' activeClassName='is-active'>Earthquakes
           </NavLink>
 
