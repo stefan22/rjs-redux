@@ -31,14 +31,13 @@ class LoadFavorites extends Component {
   }
 
   handleUnfavorite(e) {
-    console.dir(e.currentTarget);
+    //console.dir(e.currentTarget);
     let pre = e.currentTarget.parentElement.parentElement.children[0];
     let title = pre.children[1].children[0].textContent;
     this.props.handleUnfavorite(title);
   }
 
   render() {
-    console.log(this);
     const { classes,favorites,isFav } = this.props;
     return (
             <div className='favorites-list'>

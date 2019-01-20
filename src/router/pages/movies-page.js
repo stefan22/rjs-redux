@@ -15,26 +15,26 @@ class MoviesPage extends Component {
 		this.state = {
       isFav: false,
 			favorites: [],
-			pageName: 'Movies page',
-			movies: [],
-			moviesLoaded: false,
-			movieQuery: 'star'
+      movies: [],
+      moviesLoaded: false,
+      movieQuery: '',
 		};
 		this.handleGetMovies = this.handleGetMovies.bind(this);
 		this.handleMovieInput = this.handleMovieInput.bind(this);
 		this.handleShowFavoritesButton = this.handleShowFavoritesButton.bind(this);
     this.handleTableCell = this.handleTableCell.bind(this);
+    this.favToRem = this.favToRem.bind(this);
     this.handleToggleHighlight = this.handleToggleHighlight.bind(this);
     this.handleUnfavorite = this.handleUnfavorite.bind(this);
 	}
 
   componentWillMount() {	//bef init render get storage
-    let {favorites} = this.state;
+    let tempFavArr = [];
     for ( let i = 0, len = localStorage.length; i < len; ++i ) {
-      favorites.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+      tempFavArr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
     this.setState({
-      favorites: this.state.favorites, ...favorites,
+      favorites: tempFavArr,
     });
   }
 
@@ -45,46 +45,34 @@ class MoviesPage extends Component {
 	}
 
 	handleMovieInput(term) {
-		const movies = this.state.movies || [];
-		let storeTitles = [];
-		let isTerm = new RegExp(term + '.*', 'i');
-		//set movieQuery
-		this.setState({
-			movieQuery: this.state.movieQuery !== isTerm ? isTerm : this.state.movieQuery
-		});
-		//check stored movies for matches
-		if (movies.length > 0) {
-			movies.map((itm) => {
-				if (itm.title.match(isTerm)) {
-					storeTitles.push(itm);
-				}
-				return this.setState({
-					movies: storeTitles,
-					...movies
-				});
-			});
-		} else {
-			//search api
-			this.handleGetMovies();
-		}
+    this.setState({
+      movieQuery: term,
+    });
+    this.handleGetMovies();
 	}
 
 	handleShowFavoritesButton() {
-   this.setState(prevState => ({
-     isFav: !prevState.isFav
-   }));
+    let xlight = document.getElementById('movies-table');
+    let highs = xlight.children[1].children;
+    //remove highlights
+    for(let i=0; i<highs.length; i++) {
+      if(highs[i].classList.contains('highlight')) {
+         highs[i].classList.remove('highlight');
+      }
+    } //isFav
+    this.setState(prevState => ({
+      isFav: !prevState.isFav
+    }));
 	}
 
 	handleGetMovies() {
-		//not in storage search api
-		fetch(API + this.state.movieQuery).then((response) => response.json()).then((data) => {
-      data = data.results;
-      this.setState((prevState) => ({
-        //add results to front of array
-        moviesLoaded: true,
-        movies: data,
-        ...prevState.movies
-      }));
+    const {movieQuery} = this.state;
+    !!movieQuery &&
+		fetch(API + movieQuery).then((response) => response.json()).then((data) => {
+        data = data.results;
+        this.setState({
+          movies: data,
+        });
 		});
   }
 
@@ -96,9 +84,10 @@ class MoviesPage extends Component {
       if(itm.title !== isTitle) {//rem from favs
         favsRem.push(itm);
       }
-      return this.setState({
-        favorites: favsRem
-      });
+      return favsRem;
+    });
+    this.setState({
+      favorites: favsRem,
     });
   }
 
@@ -112,7 +101,7 @@ class MoviesPage extends Component {
       if (highliItem.classList.contains('highlight')) {
          highliItem.classList.remove('highlight');
          localStorage.removeItem(isTitle);//remove from localstorage
-        this.favToRem(isTitle);
+         this.favToRem(isTitle);
       } else {//add highlight
           highliItem.classList.add('highlight');
           //check title bef adding to localstorage
@@ -146,13 +135,18 @@ class MoviesPage extends Component {
 
 
 	render() {
-		let saveList = 'Show Favorites';
+    console.log(this);
+    let saveList = 'Show Favorites';
+    const pageTitle = 'Movies page';
+    const pageSubtitle='Movies page list subtitle'
 		const { moviesLoaded } = this.state;
-		const { pageName } = this.state;
 		if (!moviesLoaded) {
 			return (
 				<div className="container">
-					<Header pageName={pageName} />
+					<Header
+            pageTitle={pageTitle}
+            pageSubtitle={pageSubtitle}
+          />
 					<div className="main-content">
 						<div className="movies-loading">
 							<h1>Loading...</h1>
@@ -167,12 +161,17 @@ class MoviesPage extends Component {
 			//movies have loaded
 			return (
 				<div className="container">
-					<Header pageName={pageName} />
+					<Header
+            pageTitle={pageTitle}
+            pageSubtitle={pageSubtitle}
+          />
 					<div className="main-content">
 						<div className="movies-list">
 							<h1>Movies list</h1>
 							<div className="movie-input">
-								<MovieSearch handleMovieInput={this.handleMovieInput} />
+								<MovieSearch
+                  movieQuery={this.state.movieQuery}
+                  handleMovieInput={this.handleMovieInput} />
 								<TableInfo />
 							</div>
 

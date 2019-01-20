@@ -37,7 +37,7 @@ class MoviesTable extends Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.props.movies.length > 0 ? (
+            {this.props.movies.length > 0 && (
               this.props.movies.map((mov, idx) => {
                 return [
                   <TableRow key={idx} favkey={idx}
@@ -70,7 +70,7 @@ class MoviesTable extends Component {
                   </TableRow>
                 ];
               })
-            ) : null}
+            )}
           </TableBody>
         </Table>
       </Paper>

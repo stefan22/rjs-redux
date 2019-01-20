@@ -10,8 +10,8 @@ class MovieSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
-    }
+      movieQuery: this.props.movieQuery,
+    };
     this.handleMovieInput = this.handleMovieInput.bind(this);
     this.enterKey = this.enterKey.bind(this);
   }
@@ -19,23 +19,32 @@ class MovieSearch extends Component {
   enterKey(e) {
     if(e.keyCode === 13) {
       document.querySelector('.search-input input').value = '';
-      document.querySelector('.search-input input')
-      .removeEventListener('keydown',this.enterKey, false);
+      let xlight = document.getElementById('movies-table');
+      let highs = xlight.children[1].children;
+      //remove highlights
+      for(let i=0; i<highs.length; i++) {
+        if(highs[i].classList.contains('highlight')) {
+          highs[i].classList.remove('highlight');
+        }
+      }
     }
   }
 
   handleMovieInput(e) {
     let query = e.target.value.trim();
-    if(typeof query === 'string' && query.length >3) {
+    let space = '<span className="hide"> </span>';
+    if(typeof query === 'string') {
       query = query.split(' ').join('&');
+      this.setState({
+        movieQuery: (this.state.movieQuery === query) ? '' : this.state.movieQuery + space,
+      });
       this.props.handleMovieInput(query);
     }
-    //console.log(query);
+
     document.querySelector('.search-input input')
     .addEventListener('keydown',this.enterKey, false);
   }
   render() {
-    //console.log(this);
     return (
       <Paper className='search-root' elevation={1}>
         <IconButton className='search-icon' aria-label="Menu">
