@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar component should render top navigation correctly 1`] = `
+<div
+  className="topbar"
+>
+  <WithStyles(AppBar)
+    position="static"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        className="topbar-icon"
+        color="inherit"
+      >
+        <img
+          alt="docs-logo"
+          src="docs.png"
+          width="500"
+        />
+      </WithStyles(IconButton)>
+      <WithStyles(Typography)
+        className="topbar-grow"
+        color="inherit"
+        variant="h6"
+      />
+      <NavLink
+        activeClassName="is-active"
+        aria-current="page"
+        className="nav topbar-home"
+        exact={true}
+        to="/"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        aria-current="page"
+        className="nav topbar-expenses"
+        to="/expenses"
+      >
+        Expenses
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        aria-current="page"
+        className="nav topbar-movies"
+        to="/movies"
+      >
+        Movies
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        aria-current="page"
+        className="nav topbar-earthquakes"
+        to="/earthquakes"
+      >
+        Earthquakes
+      </NavLink>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</div>
+`;
