@@ -4,18 +4,25 @@ import './scss/App.scss';
 
 class App extends Component {
 	render() {
-    const pageName='Home page';
-    const subtitle='home page dashboard';
 		return (
-			<div className="container">
+      <div className='wrapper'>
+			  <div className="container">
 				<Header
-          pageName={pageName}
-          subtitle={subtitle}
+          pageTitle={'Home page'}
+          pageSubtitle={'home page dashboard'}
         />
 
 				<div className="main-content">
 					<h2>Main content</h2>
-					<p className="text-left">
+
+
+          <img className='carousel'
+            src='./images/carousel.png'
+            alt={'carousel here soon'}
+
+          />
+
+          <p className="text-left">
 						Dolor primis viverra aenean fusce inceptos bibendum sagittis pretium aptent inceptos nulla
 						facilisi. Laoreet molestie est faucibus dapibus in sed aptent quisque nulla. Lacinia, taciti
 						vitae orci ante tincidunt in. Erat ac; convallis dignissim? Sollicitudin senectus, interdum
@@ -42,7 +49,8 @@ class App extends Component {
 					</p>
 				</div>
 			</div>
-		);
+      </div>
+    );
 	}
 }
 

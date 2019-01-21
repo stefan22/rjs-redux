@@ -14,8 +14,6 @@ class EarthquakesPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			title: 'Earthquakes Happened Here',
-			subtitle: '(no empty options are ever entered)',
 			earthquakes:[],
 			EQloaded: false,
 			lowToHigh: false,
@@ -93,13 +91,17 @@ class EarthquakesPage extends Component {
 	}
 
 	render() {
-		const {EQloaded} = this.state;
+    const {EQloaded} = this.state;
 		if(!EQloaded) {
 		return (
 			<div className='wrapper'>
 
 				<div className="container">
-					<Header header={this.state.header} />
+					<Header
+            pageTitle={'Earthquakes Happened Here'}
+            pageSubtitle={'Earthquakes page list subtitle'}
+
+          />
 					<div className="main-content">
 						<div className='earth-loading'>
 							<h2 className='text-center'>
@@ -117,7 +119,10 @@ class EarthquakesPage extends Component {
 				<div className='wrapper'>
 
 					<div className="container">
-						<Header header={this.state.header} />
+						<Header
+              pageTitle={'Earthquakes Happened Here'}
+              pageSubtitle={'Earthquakes page list subtitle'}
+            />
 						<div className="main-content">
 							<div className="eq-list">
 								<h1>Earthquakes list</h1>

@@ -1,4 +1,14 @@
-@import 'scss/App';
+//@import './scss/App.scss';
+
+.wrapper {
+  padding: 0;
+  @media (max-width:667px) {
+    padding: 0 1rem;
+    .container {
+      padding: 0;
+    }
+  }
+}
 
 a {
 
@@ -14,4 +24,5 @@ a {
 
 
 }
+
 

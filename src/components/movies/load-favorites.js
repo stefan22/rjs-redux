@@ -42,7 +42,9 @@ class LoadFavorites extends Component {
     return (
             <div className='favorites-list'>
               {
-               isFav && favorites !== undefined && favorites.map((itm,index) => {
+               isFav && favorites !== undefined && favorites.map((itm,index) =>
+               {
+                 if(!Array.isArray(itm)) {
                   return (
                       <Card className='fav-movies-card' key={index}>
                         <CardActionArea>
@@ -78,6 +80,7 @@ class LoadFavorites extends Component {
                         </CardActions>
                       </Card>
                   );
+                 }
                 })
               }
           </div>

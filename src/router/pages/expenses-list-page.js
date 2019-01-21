@@ -7,7 +7,8 @@ import ExpensesListFilters from '../../components/expenses/expenses-list-filters
 class ExpensesListPage extends Component {
   render() {
     return (
-      <div className='container'>
+      <div className='wrapper'>
+        <div className='container'>
         <header className='header expenses-list'>
           <h1 className='text-center'>Expenses List page</h1>
           <p className='text-center'>(filters off description)</p>
@@ -19,7 +20,7 @@ class ExpensesListPage extends Component {
 
 
       </div>
-
+      </div>
     );
   }
 }

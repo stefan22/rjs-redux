@@ -45,7 +45,6 @@ class SortByType extends React.Component {
     this.setState({
       options: options,
     });
-    console.log(options);
 
   }
 

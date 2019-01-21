@@ -1,5 +1,15 @@
 @import '../base/settings';
 
+.wrapper {
+  padding: 0;
+  @media (max-width:667px) {
+    padding: 0 1rem;
+    .container {
+      padding: 0;
+    }
+  }
+}
+
 #eq-table.eq-table tr > td.table-title {
   max-height: 101px;
   overflow: hidden;
@@ -10,7 +20,7 @@
   font-size: $sm-size;
   text-align: left;
   max-height: 90px;
-  background-color: $sdark;
+  background-color: $table-color;
 }
 
 
@@ -50,8 +60,9 @@
   max-width: 150px;
   @media (max-width:667px) {
     width:20%;
+    font-size: $xs-size;
     max-width: 40px;
-    padding: 4px 5px 4px 5px;
+    padding: 4px 30px 4px 5px;
   }
 }
 
@@ -80,20 +91,19 @@
 #eq-table.eq-table tr > th {
   color: whitesmoke;
   font-weight: 400;
-  font-size: $xs-size;
+  font-size: $sm-size;
   text-align: left;
+  @media (max-width:667px) {
+    font-size: $xs-size;
+  }
 }
 
 #eq-table.eq-table tr > td {
   font-weight: 400;
   font-size: $sm-size;
   text-align: left;
-  max-height: 90px;
   color: #00010b;
   border-bottom: 0;
-  margin-top:2px;
-  margin-bottom: 0px;
-  padding: 4px 50px 4px 50px;
 
 }
 
@@ -132,8 +142,9 @@
 }
 
 #eq-table.eq-table tr > td.table-overview {
-  padding: 4px 25px 4px 25px;
-  // width: 40%;
+  padding: 4px 17px 4px 24px;
+    line-height: 3;
+
   @media (max-width:667px) {
     width:40%;
     max-width: 250px;
@@ -200,19 +211,17 @@
   padding: 7px 0;
   justify-content: flex-end;
   .buttons-wrapper {
+    margin-left: 15px;
     button {
-      &:last-child {
-        margin-left:10px;
-      }
+      margin-bottom: 2px;
     }
     .sort-button {
-      margin:0;
       font-size: $btn-size;
-      padding: 12px 30px;
+      padding: 12px 27px;
       color: #fff;
-      background-color: rgb(225, 0, 80);
+      background-color:#e12b00;
       &:hover {
-        background-color: rgb(157, 0, 56);
+        background-color: #ca2306;
         text-decoration:none;
       }
     }
@@ -225,7 +234,7 @@
     margin:0;
     border-bottom: none;
     &:hover,&:active,&:focus {
-      color:black;
+      color:$table-color;
     }
   }
   label {
@@ -233,9 +242,11 @@
     color: $stext;
     line-height: 0;
     font-weight: 400;
+    margin-top:5px;
     &:active, &:focus, &:visited {
-      color:$stext;
+      color:$table-color;
       outline: none;
+      font-size: $sm-size
     }
     .MuiFormLabel-root-111.MuiFormLabel-focuses-112:active {
       color:$stext;
@@ -251,5 +262,11 @@
 }
 
 .MuiSelect-select-119.MuiSelect-selectMenu-122 {
+  font-size: $sm-size;
+}
+
+
+.eq-input label + .MuiInput-formControl-125 {
+  margin-top: 12px;
   font-size: $sm-size;
 }

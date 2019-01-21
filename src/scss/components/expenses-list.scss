@@ -1,5 +1,15 @@
 @import '../base/settings';
 
+.wrapper {
+  padding: 0;
+  @media (max-width:667px) {
+    padding: 0 1rem;
+    .container {
+      padding: 0;
+    }
+  }
+}
+
 .paper-root {
 	width: 100%;
 	overflow-x: auto;

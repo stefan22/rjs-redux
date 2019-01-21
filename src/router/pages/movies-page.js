@@ -135,7 +135,6 @@ class MoviesPage extends Component {
 
 
 	render() {
-    console.log(this);
     let saveList = 'Show Favorites';
     const pageTitle = 'Movies page';
     const pageSubtitle='Movies page list subtitle'
@@ -160,7 +159,8 @@ class MoviesPage extends Component {
 		} else {
 			//movies have loaded
 			return (
-				<div className="container">
+        <div className='wrapper'>
+				  <div className="container">
 					<Header
             pageTitle={pageTitle}
             pageSubtitle={pageSubtitle}
@@ -199,7 +199,8 @@ class MoviesPage extends Component {
 						</div>
 					</div>
 				</div>
-			);
+        </div>
+      );
 		}
 	}
 }
